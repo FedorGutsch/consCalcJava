@@ -55,24 +55,42 @@ public class Menu {
 
     }
 
-
-
     public int getNumber(int radix){
-
-        //System.out.println("Введите число");
-
         int input = 0;
         Scanner scanner = new Scanner(System.in);
 
-        if (scanner.hasNextInt(radix)) {
+        try {
             input = scanner.nextInt(radix);
         }
-        else{
-            System.out.println("Это не число");
-            getNumber(radix);
+        catch (Exception ex){
+            System.out.println(ex.getMessage());
         }
 
         return input;
+    }
+
+
+    public char getSign() {
+        Scanner scanner = new Scanner(System.in);
+        char sign;
+        System.out.print("Введите знак операции (+, -, *, /): ");
+
+
+        while (true){
+            char operator = scanner.next().charAt(0);
+
+            if (operator != '+' || operator != '-' || operator != '*' || operator != '/'){
+                System.out.println("Введите знак");
+
+            }
+            else {
+                sign = operator;
+                break;
+            }
+         }
+
+        scanner.close();
+        return sign;
     }
 
 }
