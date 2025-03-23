@@ -3,11 +3,10 @@ import java.util.Scanner;
 public class Menu {
 
 
-    private String menu = "1-Двоичная\n2-Восьмиричная\n3-Десятичная\n4-Шестнадцатиричная";
+    private String menu = "1 - Двоичная\n2 - Восьмиричная\n3 - Десятичная\n4 - Шестнадцатиричная\n-1 - Выход";
 
 
-
-    public int showMenu() {
+    public int showMenu() throws Exception{
         System.out.println(menu);
 
         System.out.println("Введите цифру от 1 до 4:");
@@ -34,7 +33,9 @@ public class Menu {
                     radix = 16;
                     break;
                 }
-
+                case -1:{
+                    throw new Exception("exit");
+                }
                 default:{
                     System.out.println("Введите цифру от 1 до 4");
                     input = this.getNumber(10);
