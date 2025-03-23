@@ -4,9 +4,9 @@ public class Main {
         Calc calc = new Calc();
         calc.showMenu();
 
-        System.out.println(calc.Solve());
+        calc.getResult();
 
-        System.out.println(calc.system);
+
     }
 
 }

@@ -4,6 +4,8 @@ public class Calc {
     int number1;
     int number2;
     char sign;
+    int result;
+
 
     public Calc() {
         menu = new Menu();
@@ -25,7 +27,7 @@ public class Calc {
         this.number2 = menu.getNumber(system);
     }
 
-    public int Solve(){
+    private int Solve(){
         this.getStatement();
 
         switch (this.sign){
@@ -43,7 +45,15 @@ public class Calc {
             }
         }
         return 0;
+    }
 
+    public void getResult(){
+        result = this.Solve();
+        String resultB = Integer.toBinaryString(result);
+        String resultO = Integer.toOctalString(result);
+        String resultH = Integer.toHexString(result);
+
+        System.out.println("Bin: " + resultB + "  Oct: "+resultO + "  Dec: " + result + "  Hex: " + resultH);
     }
 
 
