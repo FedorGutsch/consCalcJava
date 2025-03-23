@@ -5,8 +5,6 @@ public class Main {
         calc.showMenu();
 
         calc.getResult();
-
-
     }
 
 }
