@@ -11,7 +11,7 @@ public class Calc {
 
     public void  showMenu(){
         System.out.println("Выберите систему счисления ");
-        system = menu.showMenu();
+        this.setSystem(menu.showMenu());
 
     }
 
