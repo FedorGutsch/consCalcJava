@@ -6,7 +6,7 @@ public class Menu {
     private String menu = "1 - Двоичная\n2 - Восьмиричная\n3 - Десятичная\n4 - Шестнадцатиричная\n-1 - Выход";
 
 
-    public int showMenu() throws Exception{
+    public int showMenu() throws Exception {
         System.out.println(menu);
 
         System.out.println("Введите цифру от 1 до 4:");
@@ -15,28 +15,28 @@ public class Menu {
 
         int radix = -1;
 
-        while (true){
-            switch (input){
-                case  1: {
+        while (true) {
+            switch (input) {
+                case 1: {
                     radix = 2;
                     break;
                 }
-                case 2:{
+                case 2: {
                     radix = 8;
                     break;
                 }
-                case 3:{
+                case 3: {
                     radix = 10;
                     break;
                 }
-                case 4:{
+                case 4: {
                     radix = 16;
                     break;
                 }
-                case -1:{
+                case -1: {
                     throw new Exception("exit");
                 }
-                default:{
+                default: {
                     System.out.println("Введите цифру от 1 до 4");
                     input = this.getNumber(10);
                     break;
@@ -44,7 +44,7 @@ public class Menu {
 
             }
 
-            if (radix != -1){
+            if (radix != -1) {
                 break;
             }
         }
@@ -52,14 +52,23 @@ public class Menu {
 
     }
 
-    public int getNumber(int radix){
+    public int getNumber(int radix) throws Exception {
         int input = 0;
         Scanner scanner = new Scanner(System.in);
 
         try {
-            input = scanner.nextInt(radix);
-        }
-        catch (Exception ex){
+            while (true){
+                if (scanner.hasNextInt(radix)){
+                    input = scanner.nextInt(radix);
+                    break;
+                }
+                else
+                {
+                    throw new Exception("Введено неверное число");
+                }
+            }
+
+        } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
 
@@ -73,18 +82,17 @@ public class Menu {
         System.out.print("Введите знак операции (+, -, *, /): ");
 
 
-        while (true){
+        while (true) {
             char operator = scanner.next().charAt(0);
 
-            if (operator != '+' && operator != '-' && operator != '*' && operator != '/'){
+            if (operator != '+' && operator != '-' && operator != '*' && operator != '/') {
                 System.out.println("Введите знак");
 
-            }
-            else {
+            } else {
                 sign = operator;
                 break;
             }
-         }
+        }
 
 
         return sign;

@@ -20,12 +20,28 @@ public class Calc {
         this.system = system;
     }
 
-    private void getStatement(){
+    private void getStatement() throws Exception{
+
         System.out.println("Введите 2 числа");
-        this.number1 = menu.getNumber(system);
+
+        while (true){
+            try {
+                this.number1 = menu.getNumber(system);
+                break;
+            }
+            catch (Exception ex){
+                System.out.println(ex.getMessage());
+            }
+        }
+
+
         this.sign = menu.getSign();
+
+
         this.number2 = menu.getNumber(system);
-    }
+
+        }
+
 
     private int Solve() throws Exception{
         this.getStatement();
@@ -53,16 +69,14 @@ public class Calc {
     }
 
     public void getResult () throws Exception{
+        NumSystemTransformer nt = new NumSystemTransformer();
+
         result = this.Solve();
-        String resultB = Integer.toBinaryString(result);
-        String resultO = Integer.toOctalString(result);
-        String resultH = Integer.toHexString(result);
+        String resultB = nt.transformTo(result, 2);
+        String resultO = nt.transformTo(result, 8);
+        String resultH = nt.transformTo(result, 16);
 
         System.out.println("Bin: " + resultB + "  Oct: "+resultO + "  Dec: " + result + "  Hex: " + resultH);
     }
-
-
-
-
 
 }
