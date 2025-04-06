@@ -52,29 +52,20 @@ public class Menu {
 
     }
 
-    public int getNumber(int radix) throws Exception {
-        int input = 0;
+    public int getNumber(int radix) {
         Scanner scanner = new Scanner(System.in);
 
-        try {
-            while (true){
-                if (scanner.hasNextInt(radix)){
-                    input = scanner.nextInt(radix);
-                    break;
-                }
-                else
-                {
-                    throw new Exception("Введено неверное число");
-                }
+        while (true) {
+
+            if (scanner.hasNextInt(radix)) {
+                int input = scanner.nextInt(radix);
+                return input;
+            } else {
+                System.out.println("Ошибка: введено неверное число для системы счисления с основанием " + radix);
+                scanner.next();
             }
-
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
         }
-
-        return input;
     }
-
 
     public char getSign() {
         Scanner scanner = new Scanner(System.in);

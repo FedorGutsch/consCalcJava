@@ -22,7 +22,7 @@ public class Calc {
 
     private void getStatement() throws Exception{
 
-        System.out.println("Введите 2 числа");
+        System.out.println("Введите число 1");
 
         while (true){
             try {
@@ -31,13 +31,14 @@ public class Calc {
             }
             catch (Exception ex){
                 System.out.println(ex.getMessage());
+                this.number1 = menu.getNumber(system);
             }
         }
 
 
         this.sign = menu.getSign();
 
-
+        System.out.println("Введите число 2");
         this.number2 = menu.getNumber(system);
 
         }
